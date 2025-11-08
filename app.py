@@ -1,4 +1,4 @@
-import plotly.graph_objs as go
+
 from flask import Flask, render_template
 import joblib, pickle, pandas as pd, numpy as np, io, base64, os
 import matplotlib
@@ -197,7 +197,7 @@ def predict_latest():
 
             # Try Plotly interactive plot first
             try:
-                import plotly.graph_objs as go
+             
                 if 'Timestamp' in test_df.columns:
                     x = pd.to_datetime(test_df['Timestamp']).iloc[:len(y_pred)]
                     x_label = "Date"
@@ -205,20 +205,20 @@ def predict_latest():
                     x = np.arange(len(y_pred))
                     x_label = "Samples"
 
-                fig = go.Figure()
-                fig.add_trace(go.Scatter(x=x, y=y_test, mode='lines+markers',
-                                         name='Actual', line=dict(color='royalblue', width=2),
-                                         marker=dict(size=5)))
-                fig.add_trace(go.Scatter(x=x, y=y_pred, mode='lines+markers',
-                                         name='Predicted', line=dict(color='orange', width=2, dash='dash'),
-                                         marker=dict(symbol='x', size=6)))
+                # fig = go.Figure()
+                # fig.add_trace(go.Scatter(x=x, y=y_test, mode='lines+markers',
+                #                          name='Actual', line=dict(color='royalblue', width=2),
+                #                          marker=dict(size=5)))
+                # fig.add_trace(go.Scatter(x=x, y=y_pred, mode='lines+markers',
+                #                          name='Predicted', line=dict(color='orange', width=2, dash='dash'),
+                #                          marker=dict(symbol='x', size=6)))
 
-                fig.update_layout(title="Actual vs Predicted High Prices",
-                                  xaxis_title=x_label, yaxis_title="Price",
-                                  legend=dict(x=0.02, y=0.98), template="plotly_white",
-                                  height=450, margin=dict(l=40, r=20, t=50, b=40))
+                # fig.update_layout(title="Actual vs Predicted High Prices",
+                #                   xaxis_title=x_label, yaxis_title="Price",
+                #                   legend=dict(x=0.02, y=0.98), template="plotly_white",
+                #                   height=450, margin=dict(l=40, r=20, t=50, b=40))
 
-                plot_div = fig.to_html(full_html=False, include_plotlyjs='cdn')
+                # plot_div = fig.to_html(full_html=False, include_plotlyjs='cdn')
             except Exception as e:
                 print("Plotly failed, falling back to Matplotlib:", e)
                 # Matplotlib fallback
