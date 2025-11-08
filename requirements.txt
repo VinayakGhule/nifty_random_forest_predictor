@@ -1,0 +1,13 @@
+flask
+yfinance
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+ta-lib
+openchart
+peewee
+playhouse
+psycopg2-binary
+psycopg2-binary
