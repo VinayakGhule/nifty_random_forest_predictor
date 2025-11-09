@@ -1,9 +1,10 @@
 flask
 gunicorn
 joblib
-pickel
 pandas
 numpy
+matplotlib
 yfinance
 scikit-learn
 ta
+plotly
